@@ -3,9 +3,10 @@
 var miniHarp = require('../');
 var parseArgs = require('minimist');
 
-var app = miniHarp();
 var options = parseArgs(process.argv.slice(2));
+var path = options['_'][0] || process.cwd();
 var port = options.port || 4000;
+var app = miniHarp(path);
 
 console.log("Starting mini-harp on http://localhost:" + port);
 app.use(
