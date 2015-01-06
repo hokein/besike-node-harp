@@ -1,9 +1,9 @@
 var connect = require('connect');
-var serveStatic = require('serve-static')
+var serveStatic = require('serve-static');
+var jade = require('./lib/processor/jade');
 
 module.exports = function(path) {
-  console.log(path);
   var app = connect();
-  app.use(serveStatic(path));
+  app.use(serveStatic(path)).use(jade(path));
   return app;
 }
